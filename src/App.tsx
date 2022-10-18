@@ -18,6 +18,10 @@ export interface Product {
     rating: Rating
 }
 
+interface getRanking {
+    (ranking: number): string
+}
+
 function App() {
     const [products, setProducts] = useState<Product[]>([])
     const [isLoading, setIsLoading] = useState(true)
@@ -29,7 +33,7 @@ function App() {
         })
     }, [])
 
-    function getRanking(ranking) {
+    const getRanking: getRanking = (ranking) => {
         return '★'.repeat(ranking).padEnd(5, '☆')
     }
 
