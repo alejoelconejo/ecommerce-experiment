@@ -19,7 +19,10 @@ const Products = ({ filteredList }: Params) => {
                     key={id}
                     className='bg-white p-4 flex flex-col gap-4 rounded-md'
                 >
-                    <img src={image} className='h-64 w-64 object-contain' />
+                    <img
+                        src={image}
+                        className='h-64 w-64 mx-auto object-contain'
+                    />
                     <footer className='flex flex-col'>
                         <p>
                             {price.toLocaleString('es-AR', {
