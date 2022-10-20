@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import api from './api'
+import Categories from './components/Categories'
 import Footer from './components/Footer'
 import Header from './components/Header'
 import Products from './components/Products'
@@ -20,9 +21,21 @@ export interface Rating {
     count: number
 }
 
+const categories: Set<string> = new Set()
+
 const App = () => {
     const [products, setProducts] = useState<Product[]>([])
+    const [selectedCategory, setSelectedCategory] = useState<string>('')
     const [isLoading, setIsLoading] = useState(true)
+
+    const getFilteredList = () => {
+        if (!selectedCategory) return products
+        return products.filter(
+            (product) => product.category === selectedCategory
+        )
+    }
+
+    const filteredList = useMemo(getFilteredList, [selectedCategory, products])
 
     useEffect(() => {
         api().then((dataApi) => {
@@ -30,6 +43,10 @@ const App = () => {
             setIsLoading(false)
         })
     }, [])
+
+    useEffect(() => {
+        products.forEach((product) => categories.add(product.category))
+    }, [products])
 
     return (
         <div className='bg-slate-800 text-gray-200 min-h-screen'>
@@ -43,10 +60,25 @@ const App = () => {
                 </h1>
                 <p>The place where you ENJOY buying random stuff</p>
                 <section className='w-full'>
+                    <h3 className='text-xl uppercase font-bold'>Categories</h3>
+                    {!categories.size ? (
+                        <Spinner />
+                    ) : (
+                        <Categories
+                            categories={categories}
+                            setSelectedCategory={setSelectedCategory}
+                        />
+                    )}
+                </section>
+                <section className='w-full'>
                     <h2 className='text-2xl uppercase font-bold mb-6'>
                         Products
                     </h2>
-                    {isLoading ? <Spinner /> : <Products products={products} />}
+                    {isLoading ? (
+                        <Spinner />
+                    ) : (
+                        <Products filteredList={filteredList} />
+                    )}
                 </section>
             </main>
             <Footer />
