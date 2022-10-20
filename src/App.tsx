@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { createContext, useEffect, useMemo, useState } from 'react'
 import api from './api'
 import Categories from './components/Categories'
 import Footer from './components/Footer'
@@ -49,12 +49,12 @@ const App = () => {
     }, [products])
 
     return (
-        <div className='bg-slate-800 text-gray-200 min-h-screen'>
+        <div className='dark:bg-slate-800 bg-gray-50 dark:text-gray-200 text-gray-800 min-h-screen transition-colors duration-300'>
             <Header />
             <main className='flex flex-col gap-8 mt-8 items-center max-w-7xl mx-auto'>
                 <h1 className='text-6xl font-bold'>
                     Welcome to
-                    <span className='bg-gradient-to-r from-pink-400 to-pink-200 bg-clip-text text-transparent pl-2'>
+                    <span className='bg-gradient-to-r from-pink-400 to-pink-200 bg-clip-text text-transparent pl-4'>
                         Arturo Shop!
                     </span>
                 </h1>

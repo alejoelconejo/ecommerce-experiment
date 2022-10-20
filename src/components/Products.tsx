@@ -17,7 +17,7 @@ const Products = ({ filteredList }: Params) => {
             {filteredList.map(({ title, id, image, price, rating }) => (
                 <li
                     key={id}
-                    className='bg-white p-4 flex flex-col gap-4 rounded-md'
+                    className='bg-white p-4 flex flex-col gap-4 rounded-md border-gray-100 border-2'
                 >
                     <img
                         src={image}
