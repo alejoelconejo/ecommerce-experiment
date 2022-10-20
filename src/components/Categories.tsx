@@ -4,21 +4,28 @@ interface Params {
 }
 
 const Categories = ({ categories, setSelectedCategory }: Params) => {
-    const handleClick = (
-        e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-    ) => {
-        const target = e.target as HTMLInputElement
-        setSelectedCategory(target.value)
+    // const handleClick = (
+    //     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+    // ) => {
+    //     const target = e.target as HTMLInputElement
+    //     setSelectedCategory(target.value)
+    // }
+
+    const handleClick = (category: string) => {
+        setSelectedCategory(category)
     }
 
     return (
         <ul>
             <li>
-                <button onClick={handleClick}>Todos</button>
+                <button onClick={() => handleClick('')}>All</button>
             </li>
             {[...categories].map((category) => (
                 <li key={category}>
-                    <button value={category} onClick={handleClick}>
+                    <button
+                        value={category}
+                        onClick={() => handleClick(category)}
+                    >
                         {category}
                     </button>
                 </li>
