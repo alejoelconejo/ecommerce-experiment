@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import api from './api'
-import Header from './Header'
-import Products from './Products'
-import Spinner from './Spinnert'
+import Footer from './components/Footer'
+import Header from './components/Header'
+import Products from './components/Products'
+import Spinner from './components/Spinner'
 
 export interface Product {
     id: number
@@ -19,7 +20,7 @@ export interface Rating {
     count: number
 }
 
-function App() {
+const App = () => {
     const [products, setProducts] = useState<Product[]>([])
     const [isLoading, setIsLoading] = useState(true)
 
@@ -33,20 +34,22 @@ function App() {
     return (
         <div className='bg-slate-800 text-gray-200 min-h-screen'>
             <Header />
-            <main className='flex flex-col gap-8 mt-6 items-center'>
-                <h1 className='text-5xl font-bold'>
+            <main className='flex flex-col gap-8 mt-8 items-center max-w-7xl mx-auto'>
+                <h1 className='text-6xl font-bold'>
                     Welcome to
-                    <span className='text-pink-300 pl-2'>Arturo Shop!</span>
+                    <span className='bg-gradient-to-r from-pink-400 to-pink-200 bg-clip-text text-transparent pl-2'>
+                        Arturo Shop!
+                    </span>
                 </h1>
                 <p>The place where you ENJOY buying random stuff</p>
-                <section>
+                <section className='w-full'>
                     <h2 className='text-2xl uppercase font-bold mb-6'>
                         Products
                     </h2>
                     {isLoading ? <Spinner /> : <Products products={products} />}
                 </section>
             </main>
-            <footer>footer</footer>
+            <Footer />
         </div>
     )
 }

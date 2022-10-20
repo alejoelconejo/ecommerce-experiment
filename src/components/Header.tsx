@@ -1,8 +1,8 @@
 const Header = () => (
-    <header className='flex justify-around p-4 items-center'>
+    <header className='flex justify-between p-4 items-center max-w-7xl mx-auto'>
         <a href='/'>
             <img src='' />
-            <h1 className='text-3xl self-start text-pink-300 font-bold'>
+            <h1 className='text-3xl self-start bg-gradient-to-r from-pink-400 to-pink-200 bg-clip-text text-transparent font-bold'>
                 Arturo Shop
             </h1>
         </a>

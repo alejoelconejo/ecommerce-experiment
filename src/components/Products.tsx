@@ -1,4 +1,4 @@
-import { Product } from './App'
+import { Product } from '../App'
 
 interface getRanking {
     (ranking: number): string
