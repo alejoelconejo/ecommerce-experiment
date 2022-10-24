@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { setTheme } from '../actions/setTheme'
 import { toggleTheme } from '../actions/toggleTheme'
+import { Link } from 'wouter'
 import darkIcon from '../assets/images/dark-icon.svg'
 import lightIcon from '../assets/images/light-icon.svg'
 
@@ -15,20 +16,18 @@ const Header = () => {
 
   return (
     <header className='flex justify-between p-4 items-center max-w-7xl mx-auto'>
-      <a href='/'>
+      <Link href='/'>
         <img src='' />
         <h1 className='text-3xl self-start bg-gradient-to-r from-pink-400 to-pink-200 bg-clip-text text-transparent font-bold'>
           Arturo Shop
         </h1>
-      </a>
+      </Link>
       <nav>
         <ul className='flex gap-8'>
           <li>Men</li>
           <li>Women</li>
-          <li>Winter</li>
-          <li>Spring</li>
-          <li>Electronic</li>
-          <li>Food</li>
+          <li>Electronics</li>
+          <li>Jewelry</li>
         </ul>
       </nav>
       <div>
