@@ -13,7 +13,11 @@ export const Detail = ({ products, params }: Params) => {
   const productDetail = products.filter((product) => product.id === paramsId)[0]
 
   const getSimilarProducts = () =>
-    products.filter((product) => productDetail.category === product.category)
+    products.filter(
+      (product) =>
+        productDetail.category === product.category &&
+        productDetail.id !== product.id
+    )
 
   const similarProducts = getSimilarProducts()
 
