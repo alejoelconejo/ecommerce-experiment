@@ -30,7 +30,7 @@ export const Home = ({ isLoading, products }: Params) => {
       <h1 className='text-6xl font-bold'>
         Welcome to
         <span className='bg-gradient-to-r from-pink-400 to-pink-200 bg-clip-text text-transparent pl-4'>
-          Arturo Shop!
+          El Conejo Shop!
         </span>
       </h1>
       <p>The place where you ENJOY buying random stuff</p>

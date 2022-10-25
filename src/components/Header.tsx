@@ -19,7 +19,7 @@ const Header = () => {
       <Link href='/'>
         <img src='' />
         <h1 className='text-3xl self-start bg-gradient-to-r from-pink-400 to-pink-200 bg-clip-text text-transparent font-bold'>
-          Arturo Shop
+          El Conejo Shop
         </h1>
       </Link>
       <nav>
