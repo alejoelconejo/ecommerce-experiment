@@ -4,14 +4,14 @@ import { ProductDetail } from '../components/ProductDetail'
 import { RelatedProducts } from '../components/RelatedProducts'
 import { Product } from '../types'
 
-interface Params {
+interface Props {
   products: Product[]
   params: { id: string }
   cart: Product[]
   setCart: React.Dispatch<SetStateAction<Product[]>>
 }
 
-export const Detail = ({ products, params, cart, setCart }: Params) => {
+export const Detail = ({ products, params, cart, setCart }: Props) => {
   const paramsId = Number(params.id)
 
   const productDetail = products.filter((product) => product.id === paramsId)[0]

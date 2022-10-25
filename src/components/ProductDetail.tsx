@@ -2,13 +2,13 @@ import { SetStateAction } from 'react'
 import { getRanking } from '../actions/getRanking'
 import { Product } from '../types'
 
-interface Params {
+interface Props {
   productDetail: Product
   cart: Product[]
   setCart: React.Dispatch<SetStateAction<Product[]>>
 }
 
-export const ProductDetail = ({ productDetail, cart, setCart }: Params) => {
+export const ProductDetail = ({ productDetail, cart, setCart }: Props) => {
   const handleClick = () => {
     console.log('added product ')
     setCart((cart) => cart.concat(productDetail))

@@ -7,12 +7,12 @@ import darkIcon from '../assets/images/dark-icon.svg'
 import lightIcon from '../assets/images/light-icon.svg'
 import { Product } from '../types'
 
-interface Params {
+interface Props {
   cart: Product[]
   setCart: React.Dispatch<SetStateAction<Product[]>>
 }
 
-const Header = ({ cart, setCart }: Params) => {
+const Header = ({ cart, setCart }: Props) => {
   const [isModalOpen, toggleModalOpen] = useState(false)
 
   useEffect(() => {

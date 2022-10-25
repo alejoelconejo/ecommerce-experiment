@@ -3,11 +3,11 @@ import { getRanking } from '../actions/getRanking'
 
 import { Product } from '../types'
 
-interface Params {
+interface Props {
   filteredList: Product[]
 }
 
-const Products = ({ filteredList }: Params) => {
+const Products = ({ filteredList }: Props) => {
   return (
     <ul className='grid grid-cols-cards gap-4 text-slate-800'>
       {filteredList.map(({ title, id, image, price, rating }) => (

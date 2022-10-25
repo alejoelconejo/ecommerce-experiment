@@ -1,5 +1,7 @@
+import { Rating } from '../types'
+
 interface getRanking {
-  (ranking: number): string
+  (ranking: Rating['rate']): string
 }
 
 export const getRanking: getRanking = (ranking) => {

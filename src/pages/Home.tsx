@@ -4,14 +4,14 @@ import Products from '../components/Products'
 import Spinner from '../components/Spinner'
 import { Product } from '../types'
 
-interface Params {
+interface Props {
   isLoading: boolean
   products: Product[]
 }
 
-const categories: Set<string> = new Set()
+const categories: Set<Product['category']> = new Set()
 
-export const Home = ({ isLoading, products }: Params) => {
+export const Home = ({ isLoading, products }: Props) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('')
 
   const getFilteredList = () => {

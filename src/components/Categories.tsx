@@ -1,9 +1,11 @@
-interface Params {
-  categories: Set<string>
+import { Product } from '../types'
+
+interface Props {
+  categories: Set<Product['category']>
   setSelectedCategory: React.Dispatch<React.SetStateAction<string>>
 }
 
-const Categories = ({ categories, setSelectedCategory }: Params) => {
+const Categories = ({ categories, setSelectedCategory }: Props) => {
   const handleClick = (category: string) => {
     setSelectedCategory(category)
   }

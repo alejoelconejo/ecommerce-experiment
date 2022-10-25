@@ -7,7 +7,7 @@ import { Detail } from './pages/Detail'
 import { Home } from './pages/Home'
 import { Product } from './types'
 
-const App = () => {
+const App: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([])
   const [cart, setCart] = useState<Product[]>([])
   const [isLoading, setIsLoading] = useState(false)

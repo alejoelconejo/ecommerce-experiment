@@ -1,12 +1,12 @@
 import { Link } from 'wouter'
 import { Product } from '../types'
 
-interface Params {
+interface Props {
   products: Product[]
   productDetail: Product
 }
 
-export const RelatedProducts = ({ products, productDetail }: Params) => {
+export const RelatedProducts = ({ products, productDetail }: Props) => {
   const getRelatedProducts = () =>
     products.filter(
       (product) =>
