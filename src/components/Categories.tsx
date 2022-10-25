@@ -8,8 +8,6 @@ const Categories = ({ categories, setSelectedCategory }: Params) => {
     setSelectedCategory(category)
   }
 
-  if (!categories) return null
-
   return (
     <ul className='flex gap-4 [&>li>button]:uppercase'>
       <li>

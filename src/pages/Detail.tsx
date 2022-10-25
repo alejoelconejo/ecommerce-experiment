@@ -21,6 +21,9 @@ export const Detail = ({ products, params }: Params) => {
 
   return (
     <section className='max-w-4xl'>
+      <header className='mb-8 dark:text-gray-300'>
+        <Link href='/'>Back to Home</Link>
+      </header>
       <article className='flex gap-8 mb-12'>
         <figure className='p-8 bg-white rounded-md border-gray-100 border-2 flex justify-center items-center flex-1'>
           <img
@@ -52,8 +55,8 @@ export const Detail = ({ products, params }: Params) => {
           {similarProducts.map(({ id, title, image }) => (
             <li key={id} className='w-full'>
               <Link href={`/product/${id}`}>
-                <figure className='bg-white p-4 rounded-md'>
-                  <img src={image} className='h-48 w-48 object-contain '></img>
+                <figure className='bg-white p-4 rounded-md border-gray-100 border-2'>
+                  <img src={image} className='h-48 w-48 object-contain'></img>
                 </figure>
                 <h3>{title}</h3>
               </Link>

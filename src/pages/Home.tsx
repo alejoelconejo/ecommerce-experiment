@@ -24,6 +24,7 @@ export const Home = ({ isLoading, products }: Params) => {
   }, [products])
 
   const filteredList = useMemo(getFilteredList, [selectedCategory, products])
+
   return (
     <>
       <h1 className='text-6xl font-bold'>
