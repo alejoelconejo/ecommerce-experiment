@@ -1,13 +1,17 @@
+import { SetStateAction } from 'react'
 import { getRanking } from '../actions/getRanking'
 import { Product } from '../types'
 
 interface Params {
   productDetail: Product
+  cart: Product[]
+  setCart: React.Dispatch<SetStateAction<Product[]>>
 }
 
-export const ProductDetail = ({ productDetail }: Params) => {
-  const handleClick = (id: number) => {
-    console.log('added product ', id)
+export const ProductDetail = ({ productDetail, cart, setCart }: Params) => {
+  const handleClick = () => {
+    console.log('added product ')
+    setCart((cart) => cart.concat(productDetail))
   }
 
   return (
@@ -29,7 +33,7 @@ export const ProductDetail = ({ productDetail }: Params) => {
           <span>({productDetail.rating.count})</span>
         </div>
         <button
-          onClick={() => handleClick(productDetail.id)}
+          onClick={() => handleClick()}
           className='bg-pink-500 hover:bg-pink-600 py-2 px-4 rounded-full text-gray-100 font-bold'
         >
           Add to Cart
