@@ -30,6 +30,7 @@ const App = () => {
           <Route path='/product/:id'>
             {(params) => <Detail products={products} params={params} />}
           </Route>
+          <Route>404, Not Found!</Route>
         </Switch>
       </main>
       <Footer />
