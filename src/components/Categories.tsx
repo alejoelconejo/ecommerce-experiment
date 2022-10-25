@@ -4,16 +4,11 @@ interface Params {
 }
 
 const Categories = ({ categories, setSelectedCategory }: Params) => {
-  // const handleClick = (
-  //     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  // ) => {
-  //     const target = e.target as HTMLInputElement
-  //     setSelectedCategory(target.value)
-  // }
-
   const handleClick = (category: string) => {
     setSelectedCategory(category)
   }
+
+  if (!categories) return null
 
   return (
     <ul className='flex gap-4 [&>li>button]:uppercase'>

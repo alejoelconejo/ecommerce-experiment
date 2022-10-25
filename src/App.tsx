@@ -9,9 +9,10 @@ import { Product } from './types'
 
 const App = () => {
   const [products, setProducts] = useState<Product[]>([])
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
+    setIsLoading(true)
     api().then((dataApi) => {
       setProducts(dataApi)
       setIsLoading(false)
