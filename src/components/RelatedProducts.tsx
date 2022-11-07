@@ -24,13 +24,13 @@ export const RelatedProducts = ({ products, productDetail }: Props) => {
           <li key={id} className='w-full'>
             <Link
               href={`/product/${id}`}
-              onClick={() => {
-                window.scroll({
-                  top: 0,
-                  left: 0,
-                  behavior: 'smooth',
-                })
-              }}
+              // onClick={() => {
+              //   window.scroll({
+              //     top: 0,
+              //     left: 0,
+              //     behavior: 'smooth',
+              //   })
+              // }}
             >
               <figure className='bg-white p-4 rounded-md border-gray-100 border-2'>
                 <img src={image} className='h-48 w-48 object-contain'></img>

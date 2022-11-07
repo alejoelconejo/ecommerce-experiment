@@ -3,6 +3,7 @@ import { Switch, Route } from 'wouter'
 import api from './api'
 import Footer from './components/Footer'
 import Header from './components/Header'
+import ScrollToTop from './components/scrollToTop'
 import { Detail } from './pages/Detail'
 import { Home } from './pages/Home'
 import { Product } from './types'
@@ -22,6 +23,7 @@ const App: React.FC = () => {
 
   return (
     <div className='dark:bg-slate-800 bg-gray-50 dark:text-gray-200 text-gray-800 min-h-screen transition-colors duration-300'>
+      <ScrollToTop />
       <Header cart={cart} setCart={setCart} />
       <main className='flex flex-col gap-8 my-8 items-center max-w-7xl mx-auto'>
         <Switch>
