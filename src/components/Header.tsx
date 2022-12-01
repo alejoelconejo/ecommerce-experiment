@@ -34,8 +34,7 @@ const Header = ({ cart, setCart }: Props) => {
   return (
     <header className='flex justify-between p-4 items-center max-w-7xl mx-auto'>
       <Link href='/'>
-        <img src='' />
-        <h1 className='text-3xl self-start bg-gradient-to-r from-pink-400 to-pink-200 bg-clip-text text-transparent font-bold'>
+        <h1 className='text-3xl self-start bg-gradient-to-r from-pink-400 to-pink-200 bg-clip-text text-transparent font-bold cursor-pointer'>
           El Conejo Shop
         </h1>
       </Link>
@@ -50,17 +49,20 @@ const Header = ({ cart, setCart }: Props) => {
       <div>
         <button
           id='theme-toggle'
+          aria-label='Toggle Theme'
           type='button'
           onClick={handleClickDark}
           className='text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none rounded-lg text-sm p-2.5'
         >
           <img
             src={darkIcon}
+            alt='dark-icon'
             id='theme-toggle-dark-icon'
             className='hidden w-5 h-5'
           />
           <img
             src={lightIcon}
+            alt='light-icon'
             id='theme-toggle-light-icon'
             className='hidden w-5 h-5'
           />

@@ -22,18 +22,13 @@ export const RelatedProducts = ({ products, productDetail }: Props) => {
       <ul className='grid grid-cols-relatedProducts gap-4'>
         {relatedProducts.map(({ id, title, image }) => (
           <li key={id} className='w-full'>
-            <Link
-              href={`/product/${id}`}
-              // onClick={() => {
-              //   window.scroll({
-              //     top: 0,
-              //     left: 0,
-              //     behavior: 'smooth',
-              //   })
-              // }}
-            >
+            <Link href={`/product/${id}`}>
               <figure className='bg-white p-4 rounded-md border-gray-100 border-2'>
-                <img src={image} className='h-48 w-48 object-contain'></img>
+                <img
+                  src={image}
+                  className='h-48 w-48 object-contain'
+                  alt={title}
+                ></img>
               </figure>
               <h3>{title}</h3>
             </Link>

@@ -17,7 +17,11 @@ export const ProductDetail = ({ productDetail, cart, setCart }: Props) => {
   return (
     <article className='flex gap-8 mb-12'>
       <figure className='p-8 bg-white rounded-md border-gray-100 border-2 flex justify-center items-center flex-1'>
-        <img className='w-auto h-64 object-contain' src={productDetail.image} />
+        <img
+          className='w-auto h-64 object-contain'
+          src={productDetail.image}
+          alt={productDetail.title}
+        />
       </figure>
       <div className='flex-1'>
         <h2 className='font-bold text-3xl mb-2'>{productDetail.title}</h2>

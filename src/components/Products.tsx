@@ -16,7 +16,11 @@ const Products = ({ filteredList }: Props) => {
           className='bg-white p-4 flex flex-col gap-4 rounded-md border-gray-100 border-2'
         >
           <Link href={`/product/${id}`}>
-            <img src={image} className='h-64 w-64 mx-auto object-contain' />
+            <img
+              src={image}
+              className='h-64 w-64 mx-auto object-contain'
+              alt={title}
+            />
             <footer className='flex flex-col'>
               <p>
                 {price.toLocaleString('es-AR', {
