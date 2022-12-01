@@ -1,5 +1,5 @@
 import { SetStateAction } from 'react'
-import { getRanking } from '../actions/getRanking'
+import { getRanking } from '../utils/getRanking'
 import { Product } from '../types'
 
 interface Props {
