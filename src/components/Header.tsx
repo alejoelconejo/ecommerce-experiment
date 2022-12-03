@@ -6,14 +6,17 @@ import { toggleTheme } from '../utils/toggleTheme'
 import darkIcon from '../assets/images/dark-icon.svg'
 import lightIcon from '../assets/images/light-icon.svg'
 import { Product } from '../types'
+import { Cart } from './Cart'
+import { useShoppingCart } from '../contexts/CartContext'
 
 interface Props {
-  cart: Product[]
-  setCart: React.Dispatch<SetStateAction<Product[]>>
+  products: Product[]
 }
 
-const Header = ({ cart, setCart }: Props) => {
+const Header = ({ products }: Props) => {
   const [isModalOpen, toggleModalOpen] = useState(false)
+
+  const { cartQuantity } = useShoppingCart()
 
   useEffect(() => {
     setTheme()
@@ -25,10 +28,6 @@ const Header = ({ cart, setCart }: Props) => {
 
   const handleClickCart = () => {
     toggleModalOpen(true)
-  }
-
-  const handleClickEmpty = () => {
-    setCart([])
   }
 
   return (
@@ -69,39 +68,13 @@ const Header = ({ cart, setCart }: Props) => {
         </button>
       </div>
       <button onClick={handleClickCart}>Cart</button>
-      <span>{cart.length}</span>
+      <span>{cartQuantity}</span>
       <Modal
         isOpen={isModalOpen}
         onRequestClose={() => toggleModalOpen(false)}
         ariaHideApp={false}
       >
-        {!cart.length ? (
-          <p>The cart is empty</p>
-        ) : (
-          <section>
-            <ul className='flex flex-col gap-8 m-4'>
-              {cart.map((product) => (
-                <li className='flex gap-4 items-center'>
-                  <img src={product.image} className='w-16 h-16' />
-                  <h3>{product.title}</h3>
-                  <span>
-                    {product.price.toLocaleString('es-AR', {
-                      style: 'currency',
-                      currency: 'ARS',
-                    })}
-                  </span>
-                </li>
-              ))}
-              <span>Total</span>
-              <span>
-                {cart.reduce((acc, product) => {
-                  return acc + product.price
-                }, 0)}
-              </span>
-            </ul>
-            <button onClick={handleClickEmpty}>Empty Cart</button>
-          </section>
-        )}
+        <Cart products={products} />
       </Modal>
     </header>
   )

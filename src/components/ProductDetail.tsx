@@ -1,18 +1,19 @@
 import { SetStateAction } from 'react'
 import { getRanking } from '../utils/getRanking'
 import { Product } from '../types'
+import { useShoppingCart } from '../contexts/CartContext'
 
 interface Props {
   productDetail: Product
-  cart: Product[]
-  setCart: React.Dispatch<SetStateAction<Product[]>>
 }
 
-export const ProductDetail = ({ productDetail, cart, setCart }: Props) => {
-  const handleClick = () => {
-    console.log('added product ')
-    setCart((cart) => cart.concat(productDetail))
-  }
+export const ProductDetail = ({ productDetail }: Props) => {
+  const {
+    getItemQuantity,
+    increaseCartQuantity,
+    decreaseCartQuantity,
+    removeFromCart,
+  } = useShoppingCart()
 
   return (
     <article className='flex gap-8 mb-12'>
@@ -37,7 +38,7 @@ export const ProductDetail = ({ productDetail, cart, setCart }: Props) => {
           <span>({productDetail.rating.count})</span>
         </div>
         <button
-          onClick={() => handleClick()}
+          onClick={() => increaseCartQuantity(productDetail.id)}
           className='bg-pink-500 hover:bg-pink-600 py-2 px-4 rounded-full text-gray-100 font-bold'
         >
           Add to Cart

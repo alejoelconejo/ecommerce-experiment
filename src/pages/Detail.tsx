@@ -23,11 +23,7 @@ export const Detail = ({ products, params, cart, setCart }: Props) => {
       <header className='mb-8 dark:text-gray-300'>
         <Link href='/'>Back to Home</Link>
       </header>
-      <ProductDetail
-        productDetail={productDetail}
-        cart={cart}
-        setCart={setCart}
-      />
+      <ProductDetail productDetail={productDetail} />
       <RelatedProducts products={products} productDetail={productDetail} />
     </section>
   )
