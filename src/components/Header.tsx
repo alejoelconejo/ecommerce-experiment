@@ -77,7 +77,7 @@ const Header = ({ products }: Props) => {
           open={isOpen}
           onClose={handleToggleDrawer}
           direction='right'
-          className='text-black p-8'
+          className='text-black p-8 overflow-y-scroll'
           size={'70vw'}
         >
           <Cart products={products} toggleDrawer={handleToggleDrawer} />
