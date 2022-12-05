@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'wouter'
-import Modal from 'react-modal'
 
 import { setTheme } from '../utils/setTheme'
 import { toggleTheme } from '../utils/toggleTheme'
 import { Product } from '../types'
 import { Cart } from './Cart'
 import { useShoppingCart } from '../contexts/CartContext'
+import Drawer from 'react-modern-drawer'
+import 'react-modern-drawer/dist/index.css'
 
 import darkIcon from '../assets/images/dark-icon.svg'
 import lightIcon from '../assets/images/light-icon.svg'
@@ -17,7 +18,7 @@ interface Props {
 }
 
 const Header = ({ products }: Props) => {
-  const [isModalOpen, toggleModalOpen] = useState(false)
+  const [isOpen, toggleOpen] = useState(false)
 
   const { cartQuantity } = useShoppingCart()
 
@@ -25,12 +26,12 @@ const Header = ({ products }: Props) => {
     setTheme()
   }, [])
 
-  const handleClickDark = () => {
+  const handleToggleDark = () => {
     toggleTheme()
   }
 
-  const handleClickCart = () => {
-    toggleModalOpen(true)
+  const handleToggleDrawer = () => {
+    toggleOpen((prevState) => !prevState)
   }
 
   return (
@@ -46,7 +47,7 @@ const Header = ({ products }: Props) => {
             id='theme-toggle'
             aria-label='Toggle Theme'
             type='button'
-            onClick={handleClickDark}
+            onClick={handleToggleDark}
             className='text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none rounded-lg text-sm p-2.5'
           >
             <img
@@ -64,7 +65,7 @@ const Header = ({ products }: Props) => {
           </button>
         </div>
         <button
-          onClick={handleClickCart}
+          onClick={handleToggleDrawer}
           className='bg-purple-600 hover:bg-purple-500 transition-colors duration-75 rounded-full p-3 relative'
         >
           <img src={cartIcon} className='h-6 w-6' />
@@ -72,15 +73,16 @@ const Header = ({ products }: Props) => {
             {cartQuantity}
           </span>
         </button>
+        <Drawer
+          open={isOpen}
+          onClose={handleToggleDrawer}
+          direction='right'
+          className='text-black p-8'
+          size={'70vw'}
+        >
+          <Cart products={products} toggleDrawer={handleToggleDrawer} />
+        </Drawer>
       </div>
-
-      <Modal
-        isOpen={isModalOpen}
-        onRequestClose={() => toggleModalOpen(false)}
-        ariaHideApp={false}
-      >
-        <Cart products={products} />
-      </Modal>
     </header>
   )
 }
