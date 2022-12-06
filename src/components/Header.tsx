@@ -9,6 +9,7 @@ import { useShoppingCart } from '../contexts/CartContext'
 import { ThemeButton } from './ThemeButton'
 
 import cartIcon from '../assets/images/cart.svg'
+import logo from '../assets/images/logo.svg'
 
 interface Props {
   products: Product[]
@@ -25,8 +26,9 @@ const Header = ({ products }: Props) => {
 
   return (
     <header className='flex justify-between p-4 items-center max-w-7xl mx-auto'>
-      <Link href='/'>
-        <h1 className='text-3xl self-start bg-gradient-to-r from-pink-400 to-pink-200 bg-clip-text text-transparent font-bold cursor-pointer'>
+      <Link href='/' className='flex gap-4 items-center'>
+        <img src={logo} className='w-12 h-12' />
+        <h1 className='text-3xl bg-gradient-to-r from-pink-400 to-pink-200 bg-clip-text text-transparent font-bold cursor-pointer md:block hidden'>
           El Conejo Shop
         </h1>
       </Link>

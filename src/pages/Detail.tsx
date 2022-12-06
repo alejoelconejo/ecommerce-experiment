@@ -21,7 +21,12 @@ export const Detail = ({ products, params, cart, setCart }: Props) => {
   return (
     <section className='max-w-4xl'>
       <header className='mb-8 dark:text-gray-300'>
-        <Link href='/'>Back to Home</Link>
+        <Link
+          href='/'
+          className='px-4 py-2 rounded-full bg-gray-300 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600'
+        >
+          ← Back to Home
+        </Link>
       </header>
       <ProductDetail productDetail={productDetail} />
       <RelatedProducts products={products} productDetail={productDetail} />
