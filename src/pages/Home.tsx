@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import Categories from '../components/Categories'
 import Products from '../components/Products'
 import Spinner from '../components/Spinner'
@@ -9,19 +9,13 @@ interface Props {
   products: Product[]
 }
 
-const categories: Set<Product['category']> = new Set()
-
 export const Home = ({ isLoading, products }: Props) => {
-  const [selectedCategory, setSelectedCategory] = useState<string>('')
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
 
   const getFilteredList = () => {
     if (!selectedCategory) return products
     return products.filter((product) => product.category === selectedCategory)
   }
-
-  useEffect(() => {
-    products.forEach((product) => categories.add(product.category))
-  }, [products])
 
   const filteredList = useMemo(getFilteredList, [selectedCategory, products])
 
@@ -36,11 +30,11 @@ export const Home = ({ isLoading, products }: Props) => {
       <p>The place where you ENJOY buying random stuff</p>
       <section className='w-full'>
         <h3 className='text-xl uppercase font-bold'>Categories</h3>
-        {!categories.size ? (
-          <Spinner />
+        {isLoading ? (
+          'Loading...'
         ) : (
           <Categories
-            categories={categories}
+            products={products}
             setSelectedCategory={setSelectedCategory}
           />
         )}

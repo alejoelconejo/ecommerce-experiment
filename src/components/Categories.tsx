@@ -1,27 +1,29 @@
 import { Product } from '../types'
 
 interface Props {
-  categories: Set<Product['category']>
-  setSelectedCategory: React.Dispatch<React.SetStateAction<string>>
+  products: Product[]
+  setSelectedCategory: React.Dispatch<React.SetStateAction<string | null>>
 }
 
-const Categories = ({ categories, setSelectedCategory }: Props) => {
-  const handleClick = (category: string) => {
+const Categories = ({ products, setSelectedCategory }: Props) => {
+  const handleClick = (category: string | null) => {
     setSelectedCategory(category)
   }
 
   return (
     <ul className='flex gap-4 [&>li>button]:uppercase'>
       <li>
-        <button onClick={() => handleClick('')}>All</button>
+        <button onClick={() => handleClick(null)}>All</button>
       </li>
-      {[...categories].map((category) => (
-        <li key={category}>
+      {Array.from(new Set(products.map((product) => product.category))).map(
+        (category) => (
           <button value={category} onClick={() => handleClick(category)}>
-            {category}
+            <li className='uppercase' key={category}>
+              {category}
+            </li>
           </button>
-        </li>
-      ))}
+        )
+      )}
     </ul>
   )
 }
