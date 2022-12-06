@@ -17,11 +17,11 @@ const Categories = ({ products, setSelectedCategory }: Props) => {
       </li>
       {Array.from(new Set(products.map((product) => product.category))).map(
         (category) => (
-          <button value={category} onClick={() => handleClick(category)}>
-            <li className='uppercase' key={category}>
+          <li className='uppercase' key={category}>
+            <button value={category} onClick={() => handleClick(category)}>
               {category}
-            </li>
-          </button>
+            </button>
+          </li>
         )
       )}
     </ul>

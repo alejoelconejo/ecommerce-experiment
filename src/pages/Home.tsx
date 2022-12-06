@@ -1,7 +1,8 @@
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import Categories from '../components/Categories'
 import Products from '../components/Products'
 import Spinner from '../components/Spinner'
+import { useCategories } from '../hooks/useCategories'
 import { Product } from '../types'
 
 interface Props {
@@ -10,14 +11,13 @@ interface Props {
 }
 
 export const Home = ({ isLoading, products }: Props) => {
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
+  const { selectedCategory, setSelectedCategory, getFilteredList } =
+    useCategories()
 
-  const getFilteredList = () => {
-    if (!selectedCategory) return products
-    return products.filter((product) => product.category === selectedCategory)
-  }
-
-  const filteredList = useMemo(getFilteredList, [selectedCategory, products])
+  const filteredList: Product[] = useMemo(
+    () => getFilteredList(products),
+    [selectedCategory, products]
+  )
 
   return (
     <>
