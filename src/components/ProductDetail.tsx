@@ -17,7 +17,7 @@ export const ProductDetail = ({ productDetail }: Props) => {
   const quantity = getItemQuantity(productDetail.id)
 
   return (
-    <article className='flex gap-8 mb-12'>
+    <article className='flex gap-8 mb-12 md:flex-row flex-col'>
       <figure className='p-8 bg-white rounded-md border-gray-100 border-2 flex justify-center items-center flex-1'>
         <img
           className='w-auto h-64 object-contain'

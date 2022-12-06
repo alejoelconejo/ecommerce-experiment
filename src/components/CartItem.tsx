@@ -14,12 +14,19 @@ export const CartItem = ({ id, quantity, products }: Props) => {
   if (item == null) return null
 
   return (
-    <li className='flex gap-4 items-center'>
+    <li className='flex gap-8 items-center'>
       <img src={item.image} className='h-32 w-32 object-contain' />
-      <h2>{item.title}</h2>
-      <span>{quantity}</span>
-      <span>{formatCurrency(item.price * quantity)}</span>
-      <button onClick={() => removeFromCart(item.id)} className='ml-auto'>
+      <div>
+        <h2>{item.title}</h2>
+        <div className='flex gap-8'>
+          <span>X {quantity}</span>
+          <span>{formatCurrency(item.price * quantity)}</span>
+        </div>
+      </div>
+      <button
+        onClick={() => removeFromCart(item.id)}
+        className='ml-auto px-4 py-2 rounded-full bg-gray-300 hover:bg-gray-200 '
+      >
         Remove
       </button>
     </li>

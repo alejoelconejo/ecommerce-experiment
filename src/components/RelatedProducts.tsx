@@ -19,11 +19,11 @@ export const RelatedProducts = ({ products, productDetail }: Props) => {
   return (
     <div>
       <h3 className='text-2xl mb-4'>More Products</h3>
-      <ul className='grid grid-cols-relatedProducts gap-4'>
+      <ul className='grid grid-cols-relatedProducts md:gap-4 gap-8'>
         {relatedProducts.map(({ id, title, image }) => (
           <li key={id} className='w-full'>
             <Link href={`/product/${id}`}>
-              <figure className='bg-white p-4 rounded-md border-gray-100 border-2'>
+              <figure className='bg-white p-4 rounded-md border-gray-100 border-2 items-center justify-center flex mb-2'>
                 <img
                   src={image}
                   className='h-48 w-48 object-contain'

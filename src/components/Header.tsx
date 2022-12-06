@@ -25,13 +25,22 @@ const Header = ({ products }: Props) => {
   }
 
   return (
-    <header className='flex justify-between p-4 items-center max-w-7xl mx-auto'>
+    <header className='flex justify-between py-4 items-center max-w-7xl mx-auto'>
       <Link href='/' className='flex gap-4 items-center'>
         <img src={logo} className='w-12 h-12' />
         <h1 className='text-3xl bg-gradient-to-r from-pink-400 to-pink-200 bg-clip-text text-transparent font-bold cursor-pointer md:block hidden'>
           El Conejo Shop
         </h1>
       </Link>
+      <Drawer
+        open={isOpen}
+        onClose={handleToggleDrawer}
+        direction='right'
+        className='text-black p-8 overflow-y-scroll'
+        size={'70vw'}
+      >
+        <Cart products={products} toggleDrawer={handleToggleDrawer} />
+      </Drawer>
       <div className='flex gap-8 items-center'>
         <ThemeButton />
         <button
@@ -43,15 +52,6 @@ const Header = ({ products }: Props) => {
             {cartQuantity}
           </span>
         </button>
-        <Drawer
-          open={isOpen}
-          onClose={handleToggleDrawer}
-          direction='right'
-          className='text-black p-8 overflow-y-scroll'
-          size={'70vw'}
-        >
-          <Cart products={products} toggleDrawer={handleToggleDrawer} />
-        </Drawer>
       </div>
     </header>
   )
