@@ -31,7 +31,7 @@ export const Home = ({ isLoading, products }: Props) => {
       <section className='w-full'>
         <h3 className='text-xl uppercase font-bold'>Categories</h3>
         {isLoading ? (
-          'Loading...'
+          <Spinner />
         ) : (
           <Categories
             products={products}
