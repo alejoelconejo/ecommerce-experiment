@@ -15,7 +15,7 @@ const Products = ({ filteredList }: Props) => {
           key={id}
           className='bg-white p-4 flex flex-col gap-4 rounded-md border-gray-100 border-2'
         >
-          <Link href={`/product/${id}`}>
+          <Link href={`/product/${id}`} className='hover:opacity-80'>
             <img
               src={image}
               className='h-64 w-64 mx-auto object-contain'
