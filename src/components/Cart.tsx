@@ -33,7 +33,7 @@ export const Cart = ({ products, toggleDrawer }: Props) => {
       >
         Close
       </button>
-      <ul className='flex flex-col gap-8 m-4 mt-8'>
+      <ul className='flex flex-col gap-8 md:m-4 mt-8'>
         {cartItems.map((item) => (
           <CartItem key={item.id} {...item} products={products} />
         ))}
