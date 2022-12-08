@@ -23,7 +23,7 @@ const App: React.FC = () => {
   }, [])
 
   return (
-    <div className='dark:bg-slate-800 bg-gray-50 dark:text-gray-200 text-gray-800 min-h-screen transition-colors duration-300 px-4'>
+    <div className='dark:text-gray-200 text-gray-800 min-h-screen transition-colors duration-300 px-4 md:ml-[calc(100vw-100%)] md:mr-0'>
       <ScrollToTop />
       <ShoppingCartProvider>
         <Header products={products} />
